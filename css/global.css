@@ -450,3 +450,14 @@ th {
 .cke-ig {
   border: 0px;
 }
+
+/* Correção para o menu de administração do Drupal (Admin Toolbar) ficar por cima do menu e cabeçalho do tema */
+#toolbar-administration {
+  z-index: 10000 !important;
+}
+
+#toolbar-administration .toolbar-bar,
+#toolbar-administration .toolbar-tray,
+#toolbar-administration .toolbar-tray-horizontal {
+  z-index: 10001 !important;
+}
