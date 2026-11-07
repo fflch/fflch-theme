@@ -1,4 +1,4 @@
- {#  https://api.drupal.org/api/drupal/core!modules!system!templates!menu.html.twig/8
+{#  https://api.drupal.org/api/drupal/core!modules!system!templates!menu.html.twig/8
     menu_name: The machine name of the menu.
     items: A nested list of menu items. Each menu item contains:
       attributes: HTML attributes for the menu item.
@@ -34,12 +34,22 @@
             {% if item.below %}
               {% if menu_level == 0 %}
                 <li class="dropdown main-navigation-dropdown">
-                  <a href="{{ item.url }}" class="dropdown-toggle disabled text-white " data-toggle="dropdown">{{ item.title }} </a><i class="fas fa-caret-right"></i>
+                  <div class="nav-item-wrapper">
+                    <a href="{{ item.url }}" class="dropdown-toggle disabled text-white" data-toggle="dropdown">{{ item.title }} </a>
+                    <button class="submenu-toggle" type="button" aria-expanded="false" aria-label="Abrir submenu de {{ item.title }}">
+                      <span aria-hidden="true">›</span>
+                    </button>
+                  </div>
                   {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
                 </li>
               {% else %}
                 <li class="dropdown-submenu">
-                  <a class="text-white" href="{{ item.url }}">{{ item.title }} </a><i class="fas fa-caret-right"></i>
+                  <div class="nav-item-wrapper">
+                    <a class="text-white" href="{{ item.url }}">{{ item.title }} </a>
+                    <button class="submenu-toggle" type="button" aria-expanded="false" aria-label="Abrir submenu de {{ item.title }}">
+                      <span aria-hidden="true">›</span>
+                    </button>
+                  </div>
                   {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
                 </li>
               {% endif %}
