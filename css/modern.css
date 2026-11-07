@@ -257,6 +257,35 @@ body.fflch-layout-fluid {
   color: var(--fflch-primary) !important;
 }
 
+.fflch-layout-fluid .fflch-second {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+  flex: 1 1 auto !important;
+}
+
+.fflch-layout-fluid .fflch-second .fflch-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  gap: 0.15rem !important;
+  text-align: left !important;
+}
+
+.fflch-layout-fluid .fflch-slogan {
+  margin: 0 !important;
+  line-height: 1.2 !important;
+  text-align: left !important;
+}
+
+.fflch-layout-fluid .fflch-slogan a,
+.fflch-layout-fluid .fflch-site-name a {
+  text-align: left !important;
+  display: inline-block !important;
+}
+
 .fflch-layout-fluid .fflch-site-name {
   font-size: clamp(1.8rem, 2.8vw, 2.5rem);
   font-weight: 800;
