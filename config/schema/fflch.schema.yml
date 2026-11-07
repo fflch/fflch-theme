@@ -1,0 +1,38 @@
+fflch.settings:
+  type: theme_settings
+  label: 'Configurações do Tema FFLCH'
+  mapping:
+    color_palette:
+      type: string
+      label: 'Paleta de Cores'
+    custom_color_primary:
+      type: string
+      label: 'Cor Primária Personalizada'
+    custom_color_primary_dark:
+      type: string
+      label: 'Cor Primária Escura Personalizada'
+    custom_color_accent:
+      type: string
+      label: 'Cor de Destaque Personalizada'
+    modern_effects:
+      type: integer
+      label: 'Efeitos Visuais Modernos'
+    slideshow_count:
+      type: string
+      label: 'Quantidade de Slides'
+    slideshow_animation:
+      type: string
+      label: 'Tipo de Animação do Slideshow'
+    slideshow_display:
+      type: integer
+      label: 'Exibir Slideshow'
+    slideshow_slide_speed:
+      type: string
+      label: 'Velocidade de Troca do Slideshow'
+    slideshow_animation_speed:
+      type: string
+      label: 'Velocidade da Animação do Slideshow'
+    slideshow_visiblity:
+      type: string
+      label: 'Visibilidade do Slideshow'
+

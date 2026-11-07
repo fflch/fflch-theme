@@ -46,7 +46,7 @@ body {
 }
 
 #logodefault a {
-  color: #273e74;
+  color: var(--fflch-primary, #273e74);
 }
 
 .language-icon {
@@ -66,22 +66,22 @@ body {
 
 /* unvisited link */
 a:link .logo {
-  color: #273e74;
+  color: var(--fflch-primary, #273e74);
 }
 
 /* visited link */
 a:visited .logo{
-  color: #273e74;
+  color: var(--fflch-primary, #273e74);
 }
 
 /* mouse over link */
 a:hover .logo{
-  color: #273e74;
+  color: var(--fflch-primary, #273e74);
 }
 
 /* selected link */
 a:active .logo{
-  color: #273e74;
+  color: var(--fflch-primary, #273e74);
 }
 
 h1,h2,h3,h4,h5,h6,
@@ -90,7 +90,7 @@ h1 a, h1 a:visited, h2 a, h2 a:visited, h3 a, h3 a:visited, h4 a, h4 a:visited, 
 }
 
 h1 a:hover, h1 a:active, h2 a:hover, h2 a:active, h3 a:hover, h3 a:active, h4 a:hover, h4 a:active, h5 a:hover, h5 a:active, h6 a:hover, h6 a:active {
-  color: #ab7811;
+  color: var(--fflch-accent-hover, #ab7811);
 }
 
 
@@ -117,7 +117,7 @@ h1 a:hover, h1 a:active, h2 a:hover, h2 a:active, h3 a:hover, h3 a:active, h4 a:
 
 /* aumenta tamanho da caixa de busca ***/
 .navbar {
-  background-color: #273e74;
+  background-color: var(--fflch-primary, #273e74);
   color: #fff;
 }
 
@@ -127,32 +127,32 @@ h1 a:hover, h1 a:active, h2 a:hover, h2 a:active, h3 a:hover, h3 a:active, h4 a:
 }
 
 .sidebar .headline {
-    background-color: #273e74;
+    background-color: var(--fflch-primary, #273e74);
 }
 
 /* Bloco de buscas */
 .search-block-form .form-submit {
-    background-color: #273e74;
+    background-color: var(--fflch-primary, #273e74);
 }
 
 /* footer */
 .dark-blue-bg {
-    background-color: #273e74;
+    background-color: var(--fflch-primary, #273e74);
     color: #fff;
 }
 
 .dark-blue-bg a {
-    color: #DE9C16;
+    color: var(--fflch-accent, #DE9C16);
 }
 
 .dark-blue-bg a:hover,
 .dark-blue-bg a:active {
-    color: #ab7811;
+    color: var(--fflch-accent-hover, #ab7811);
 }
 
 /* seta para cima na home */
 .btn-btt {
-    background-color: #273e74;
+    background-color: var(--fflch-primary, #273e74);
 }
 
 /* fotos no nodes */
@@ -263,10 +263,10 @@ img.align-left {
     /*CONTEÙDO DO SECOND (SITE E SLOGAN)*/
     /*FONTE*/
     .fflch-second a{
-      Font-family: "Arial Narrow", "Arial" , Sans-serif;
+      font-family: var(--fflch-font-brand, "Arial Narrow", "Arial", Sans-serif);
       text-transform: uppercase;
       text-decoration: none;
-      color: rgb(39, 62, 116);
+      color: var(--fflch-primary, rgb(39, 62, 116));
     }
     
     /*SLOGAN*/
@@ -379,10 +379,10 @@ img.align-left {
   /*CONTEÙDO DO SECOND (SITE E SLOGAN)*/
   /*FONTE*/
   .fflch-second a{
-    Font-family: "Arial Narrow", "Arial" , Sans-serif;
+    font-family: var(--fflch-font-brand, "Arial Narrow", "Arial", Sans-serif);
     text-transform: uppercase;
     text-decoration: none;
-    color: rgb(39, 62, 116);
+    color: var(--fflch-primary, rgb(39, 62, 116));
   }
   
   /*SLOGAN*/
@@ -418,39 +418,35 @@ img.align-left {
   }
 
 .button {
-  background-color: #273e74;
-  border-color: #273e74;
+  background-color: var(--fflch-primary, #273e74);
+  border-color: var(--fflch-primary, #273e74);
 }
 
 .button:hover {
-  background-color: #273e74;
-  border-color: #273e74;
+  background-color: var(--fflch-primary-dark, #1a2b52);
+  border-color: var(--fflch-primary-dark, #1a2b52);
 }
 
 /*  azul padrão nos headers das tabelas */
 th {
-  background-color: #273e74;
+  background-color: var(--fflch-primary, #273e74);
+  color: #fff;
 }
 
 /* configuração do ckeditor_accordion*/
 .ckeditor-accordion-container > dl dt.active > a {
-  background-color: #273e74;
+  background-color: var(--fflch-primary, #273e74);
 }
 
 .ckeditor-accordion-container > dl dt > a:hover {
-  background-color: #273e74;
+  background-color: var(--fflch-primary-dark, #1a2b52);
 }
 
 .ckeditor-accordion-container > dl dt > a {
-  background-color: #273e74;
+  background-color: var(--fflch-primary, #273e74);
 }
 
 /* ckeditor_images_gallery */
 .cke-ig {
   border: 0px;
-}
-
-/* Troca cor do cabeçalho das tabelas */
-th {
-  background-color: #9d9daf;
 }

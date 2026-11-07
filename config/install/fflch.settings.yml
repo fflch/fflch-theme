@@ -1,3 +1,8 @@
+color_palette: 'default'
+custom_color_primary: '#273e74'
+custom_color_primary_dark: '#1a2b52'
+custom_color_accent: '#de9c16'
+modern_effects: 1
 slideshow_count: '3'
 slideshow_animation: slide
 slideshow_display: 1

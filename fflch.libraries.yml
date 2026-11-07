@@ -3,12 +3,14 @@ global-styles-and-scripts:
   css:
     theme:
       includes/bootstrap.min.css: {}
+      css/variables.css: {}
       css/aegan.css: {}
       css/global.css: {}
       css/tabs.css: {}
       css/slideshow.css: {}
       css/menu.css: {}
       css/language-switcher.css: {}
+      css/modern.css: {}
   js:
     includes/bootstrap.min.js: {}
     js/aegan-jquery.smooth-scroll.js: {} 

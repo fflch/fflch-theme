@@ -1,0 +1,565 @@
+/*
+ * Estilos Modernos - Tema FFLCH
+ * Modernização visual e refinamento estético preservando total compatibilidade
+ * com as classes CSS e estruturas HTML utilizadas nos 500+ sites.
+ */
+
+/* ==========================================================================
+   Base & Tipografia
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fflch-font-sans);
+  color: var(--fflch-text-secondary);
+  background-color: var(--fflch-bg-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: rgba(var(--fflch-primary-rgb), 0.18);
+  color: var(--fflch-primary-dark);
+}
+
+/* Container Principal (#page-wrapper) */
+#page-wrapper {
+  background-color: var(--fflch-bg-surface);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 0 0 var(--fflch-radius-md) var(--fflch-radius-md);
+  margin-bottom: 25px;
+  overflow: visible;
+  transition: box-shadow var(--fflch-transition);
+}
+
+/* Títulos Globais */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--fflch-font-sans);
+  color: var(--fflch-text-primary);
+  font-weight: 600;
+  line-height: 1.35;
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
+}
+
+h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; }
+h2 { font-size: 1.6rem; letter-spacing: -0.01em; }
+h3 { font-size: 1.35rem; }
+h4 { font-size: 1.2rem; }
+h5 { font-size: 1.05rem; }
+h6 { font-size: 0.95rem; }
+
+/* Links */
+a {
+  color: var(--fflch-primary);
+  text-decoration: none;
+  transition: color var(--fflch-transition-fast), opacity var(--fflch-transition-fast);
+}
+
+a:hover,
+a:focus {
+  color: var(--fflch-primary-dark);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Cabeçalho e Identidade Institucional (FFLCH / USP)
+   ========================================================================== */
+
+#header-region.fflch-header-region {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.fflch-logodefault {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.fflch-firstsecondthird {
+  align-items: center;
+}
+
+/* Logo FFLCH */
+.fflch-first .fflch-logo-img {
+  transition: opacity var(--fflch-transition-fast);
+}
+
+.fflch-first .fflch-logo-link:hover .fflch-logo-img {
+  opacity: 0.88;
+}
+
+/* Nome do Site & Slogan */
+.fflch-second a {
+  font-family: var(--fflch-font-brand);
+  color: var(--fflch-primary) !important;
+  transition: color var(--fflch-transition-fast), opacity var(--fflch-transition-fast);
+}
+
+.fflch-site-name {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.fflch-site-name a:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.fflch-slogan {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+
+.fflch-slogan a:hover {
+  text-decoration: none;
+  opacity: 1;
+}
+
+/* Logo USP */
+.fflch-logo-usp-img {
+  transition: opacity var(--fflch-transition-fast);
+}
+
+.fflch-logo-usp-link:hover .fflch-logo-usp-img {
+  opacity: 0.88;
+}
+
+/* Campo de Busca no Cabeçalho */
+.region-header-right .search-block-form {
+  position: relative;
+}
+
+.region-header-right .search-block-form .form-item {
+  margin-bottom: 0;
+}
+
+.region-header-right .search-block-form .form-item .form-search {
+  border: 1px solid var(--fflch-border);
+  border-radius: var(--fflch-radius-sm);
+  padding: 8px 36px 8px 12px;
+  font-size: 0.92rem;
+  color: var(--fflch-text-primary);
+  background-color: #ffffff;
+  transition: border-color var(--fflch-transition-fast), box-shadow var(--fflch-transition-fast);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.region-header-right .search-block-form .form-item .form-search:focus {
+  border-color: var(--fflch-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(var(--fflch-primary-rgb), 0.2);
+}
+
+.search-block-form .form-submit {
+  background-color: var(--fflch-primary) !important;
+  border-radius: 0 var(--fflch-radius-sm) var(--fflch-radius-sm) 0 !important;
+  transition: background-color var(--fflch-transition-fast);
+  cursor: pointer;
+}
+
+.search-block-form .form-submit:hover,
+.search-block-form .form-submit:focus {
+  background-color: var(--fflch-primary-dark) !important;
+}
+
+/* ==========================================================================
+   Barra de Navegação Principal (.navbar / .navbar-nav)
+   ========================================================================== */
+
+.navbar {
+  background-color: var(--fflch-primary) !important;
+  box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.12), 0 1px 3px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 0;
+  border: none;
+  padding: 0;
+}
+
+.navbar-nav {
+  margin: 0;
+}
+
+.navbar-nav > li > a {
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 13px 18px !important;
+  font-size: 0.88rem;
+  color: #ffffff !important;
+  transition: background-color var(--fflch-transition-fast), color var(--fflch-transition-fast);
+}
+
+.navbar-nav > li > a:hover,
+.navbar-nav > li > a:focus,
+.navbar-nav > li.active > a,
+.navbar-nav > li > a.is-active {
+  background-color: var(--fflch-primary-dark) !important;
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+/* Submenus e Dropdowns */
+.dropdown-menu {
+  background-color: var(--fflch-primary) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: var(--fflch-radius-md) !important;
+  box-shadow: var(--fflch-shadow-lg) !important;
+  padding: 4px 0 !important;
+  min-width: 220px;
+  overflow: hidden;
+}
+
+.dropdown-menu > li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.dropdown-menu > li:last-child {
+  border-bottom: none !important;
+}
+
+.dropdown-menu > li > a,
+.dropdown-item {
+  background-color: var(--fflch-primary) !important;
+  color: #ffffff !important;
+  padding: 9px 18px !important;
+  font-size: 0.88rem !important;
+  transition: background-color var(--fflch-transition-fast), padding-left var(--fflch-transition-fast);
+  border: none !important;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-item:hover,
+.dropdown-item:focus,
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: var(--fflch-primary-dark) !important;
+  color: #ffffff !important;
+  text-decoration: none;
+  padding-left: 22px !important;
+}
+
+/* Botão Hamburger (Mobile) */
+.navbar-toggler {
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  border-radius: var(--fflch-radius-sm);
+  padding: 6px 10px !important;
+  margin: 8px 12px !important;
+  transition: background-color var(--fflch-transition-fast);
+}
+
+.navbar-toggler:hover,
+.navbar-toggler:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+/* ==========================================================================
+   Blocos Laterais e Headlines
+   ========================================================================== */
+
+.sidebar .block {
+  margin-bottom: 30px;
+}
+
+.sidebar .headline {
+  background-color: var(--fflch-primary) !important;
+  border-radius: var(--fflch-radius-xs);
+  padding: 8px 14px;
+  margin: 0 0 16px 0;
+  box-shadow: var(--fflch-shadow-xs);
+}
+
+.sidebar .headline .block-title,
+.block .headline .block-title,
+.block-title {
+  color: #ffffff !important;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  border: none !important;
+  display: block;
+}
+
+.block-menu > h2 {
+  background-color: var(--fflch-primary) !important;
+  border-radius: var(--fflch-radius-xs);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  box-shadow: var(--fflch-shadow-xs);
+}
+
+/* Links em listas nos blocos da sidebar */
+.sidebar ul {
+  padding-left: 18px;
+}
+
+.sidebar ul li {
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.sidebar ul li a {
+  color: var(--fflch-text-primary);
+  transition: color var(--fflch-transition-fast);
+}
+
+.sidebar ul li a:hover {
+  color: var(--fflch-primary);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Tabelas Modernas
+   ========================================================================== */
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--fflch-border);
+  border-radius: var(--fflch-radius-sm);
+  overflow: hidden;
+  margin: 20px 0;
+  font-size: 0.92rem;
+  background-color: #ffffff;
+  box-shadow: var(--fflch-shadow-xs);
+}
+
+th,
+thead th {
+  background-color: var(--fflch-primary) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  padding: 12px 14px;
+  border: none;
+  text-align: left;
+  letter-spacing: 0.02em;
+}
+
+td {
+  padding: 10px 14px;
+  border-top: 1px solid var(--fflch-border);
+  color: var(--fflch-text-secondary);
+  line-height: 1.5;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: rgba(var(--fflch-primary-rgb), 0.02);
+}
+
+tbody tr:hover {
+  background-color: rgba(var(--fflch-primary-rgb), 0.05);
+  transition: background-color var(--fflch-transition-fast);
+}
+
+/* ==========================================================================
+   Botões e Formulários
+   ========================================================================== */
+
+.button,
+input[type="submit"],
+.btn-primary,
+a.button-action {
+  background-color: var(--fflch-primary) !important;
+  border-color: var(--fflch-primary) !important;
+  color: #ffffff !important;
+  border-radius: var(--fflch-radius-sm);
+  padding: 8px 18px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  display: inline-block;
+  cursor: pointer;
+  transition: all var(--fflch-transition-fast);
+  box-shadow: var(--fflch-shadow-xs);
+  text-decoration: none;
+}
+
+.button:hover,
+.button:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+.btn-primary:hover,
+.btn-primary:focus,
+a.button-action:hover,
+a.button-action:focus {
+  background-color: var(--fflch-primary-dark) !important;
+  border-color: var(--fflch-primary-dark) !important;
+  color: #ffffff !important;
+  text-decoration: none;
+  box-shadow: var(--fflch-shadow-sm);
+  transform: translateY(-1px);
+}
+
+/* Campos de Formulário Gerais */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+textarea,
+select {
+  border: 1px solid var(--fflch-border);
+  border-radius: var(--fflch-radius-sm);
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  color: var(--fflch-text-primary);
+  background-color: #ffffff;
+  transition: border-color var(--fflch-transition-fast), box-shadow var(--fflch-transition-fast);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="url"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--fflch-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(var(--fflch-primary-rgb), 0.2);
+}
+
+/* ==========================================================================
+   Breadcrumbs e Abas (Tabs)
+   ========================================================================== */
+
+#breadcrumb-region {
+  padding: 8px 0;
+  margin-bottom: 18px;
+  font-size: 0.88rem;
+  color: var(--fflch-text-muted);
+}
+
+#breadcrumb-region a {
+  color: var(--fflch-text-secondary);
+}
+
+#breadcrumb-region a:hover {
+  color: var(--fflch-primary);
+  text-decoration: underline;
+}
+
+.tabs.primary {
+  border-bottom: 2px solid var(--fflch-border);
+  margin-bottom: 20px;
+}
+
+.tabs a {
+  border-radius: var(--fflch-radius-xs) var(--fflch-radius-xs) 0 0;
+  font-weight: 500;
+  color: var(--fflch-text-secondary);
+  transition: all var(--fflch-transition-fast);
+}
+
+.tabs a.is-active {
+  background-color: var(--fflch-primary-subtle) !important;
+  color: var(--fflch-primary) !important;
+  border-bottom: 2px solid var(--fflch-primary);
+  font-weight: 600;
+}
+
+.tabs a:hover {
+  background-color: var(--fflch-bg-subtle) !important;
+  color: var(--fflch-primary) !important;
+}
+
+/* ==========================================================================
+   Slideshow & Banners
+   ========================================================================== */
+
+.carousel-caption {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.5) 75%, transparent 100%) !important;
+  border-radius: 0 0 var(--fflch-radius-sm) var(--fflch-radius-sm);
+  padding: 24px 20px 14px 20px !important;
+  backdrop-filter: blur(2px);
+}
+
+.carousel-caption p {
+  margin-bottom: 0;
+  font-size: 1.05rem;
+  font-weight: 400;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* ==========================================================================
+   Rodapé & Back to Top
+   ========================================================================== */
+
+#content-top-region.dark-blue-bg {
+  background-color: var(--fflch-primary) !important;
+}
+
+#footer-column.gray-bg {
+  background-color: var(--fflch-bg-subtle) !important;
+  border-top: 1px solid var(--fflch-border);
+  border-bottom: 1px solid var(--fflch-border);
+  padding: 30px 20px;
+}
+
+#footer.dark-blue-bg,
+.dark-blue-bg {
+  background-color: var(--fflch-primary) !important;
+  color: #ffffff !important;
+}
+
+#footer {
+  padding: 30px 20px;
+  line-height: 1.6;
+}
+
+.dark-blue-bg a {
+  color: var(--fflch-accent) !important;
+  transition: color var(--fflch-transition-fast);
+}
+
+.dark-blue-bg a:hover,
+.dark-blue-bg a:active,
+.dark-blue-bg a:focus {
+  color: var(--fflch-accent-hover) !important;
+  text-decoration: underline;
+}
+
+/* Botão Flutuante Voltar ao Topo */
+.btn-btt {
+  background-color: var(--fflch-primary) !important;
+  border-radius: 50% !important;
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  transition: background-color var(--fflch-transition-fast), transform var(--fflch-transition-fast), box-shadow var(--fflch-transition-fast);
+  color: #ffffff;
+}
+
+.btn-btt:hover {
+  background-color: var(--fflch-primary-dark) !important;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* ==========================================================================
+   CKEditor Accordion
+   ========================================================================== */
+
+.ckeditor-accordion-container > dl dt > a,
+.ckeditor-accordion-container > dl dt.active > a {
+  background-color: var(--fflch-primary) !important;
+  border-radius: var(--fflch-radius-xs);
+  transition: background-color var(--fflch-transition-fast);
+}
+
+.ckeditor-accordion-container > dl dt > a:hover {
+  background-color: var(--fflch-primary-dark) !important;
+}
+

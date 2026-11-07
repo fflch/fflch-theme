@@ -1,74 +1,269 @@
 <?php
 
+/**
+ * @file
+ * Funções de pré-processamento e configurações do tema FFLCH.
+ */
+
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Component\Utility\SafeMarkup;
-use Drupal\Component\Utility\Xss;
 use Drupal\Core\Template\Attribute;
-use Drupal\file\Plugin\Core\Entity\FileInterface;
-use Drupal\Component\Utility\Unicode;
-use Drupal\Core\Path\AliasManager;
 use Drupal\file\Entity\File;
 
+if (!defined('THEME_PATH_FFLCH')) {
+  if (\Drupal::hasService('extension.list.theme')) {
+    define('THEME_PATH_FFLCH', base_path() . \Drupal::service('extension.list.theme')->getPath('fflch'));
+  }
+  elseif (function_exists('drupal_get_path')) {
+    define('THEME_PATH_FFLCH', base_path() . drupal_get_path('theme', 'fflch'));
+  }
+  else {
+    define('THEME_PATH_FFLCH', base_path() . 'themes/contrib/fflch-theme');
+  }
+}
 
-define('THEME_PATH_FFLCH', base_path() . drupal_get_path('theme', 'fflch'));
+/**
+ * Retorna o catálogo de paletas de cores do tema.
+ */
+function fflch_get_palettes() {
+  return [
+    'default' => [
+      'name' => t('Azul Tradicional FFLCH / USP (Padrão)'),
+      'description' => t('Azul clássico institucional da FFLCH e USP com acentos em ouro/âmbar.'),
+      'primary' => '#273e74',
+      'primary_dark' => '#1a2b52',
+      'primary_light' => '#3b589b',
+      'accent' => '#de9c16',
+      'accent_hover' => '#ab7811',
+      'rgb' => '39, 62, 116',
+    ],
+    'vinho' => [
+      'name' => t('Vinho / Rubi (Ciências Humanas & Letras)'),
+      'description' => t('Bordô elegante e acolhedor, ideal para Letras, Literatura e Linguística.'),
+      'primary' => '#7a1b2e',
+      'primary_dark' => '#56101e',
+      'primary_light' => '#9e263d',
+      'accent' => '#c9933b',
+      'accent_hover' => '#a67425',
+      'rgb' => '122, 27, 46',
+    ],
+    'verde' => [
+      'name' => t('Verde Floresta / Esmeralda (Geografia & Meio Ambiente)'),
+      'description' => t('Verde acadêmico profundo, ideal para Geografia, Estudos Ambientais e Ciências.'),
+      'primary' => '#1b5e3a',
+      'primary_dark' => '#114227',
+      'primary_light' => '#258251',
+      'accent' => '#d4a017',
+      'accent_hover' => '#b0800e',
+      'rgb' => '27, 94, 58',
+    ],
+    'terracota' => [
+      'name' => t('Terracota / Argila (História & Antropologia)'),
+      'description' => t('Tom terroso nobre, inspirado em cerâmica e arqueologia histórica.'),
+      'primary' => '#8b3a2b',
+      'primary_dark' => '#66271c',
+      'primary_light' => '#b04c3a',
+      'accent' => '#df9c34',
+      'accent_hover' => '#b87a20',
+      'rgb' => '139, 58, 43',
+    ],
+    'grafite' => [
+      'name' => t('Grafite Moderno / Slate (Neutro & Contemporâneo)'),
+      'description' => t('Cinza ardósia contemporâneo e sofisticado, neutro para portais e laboratórios.'),
+      'primary' => '#334155',
+      'primary_dark' => '#1e293b',
+      'primary_light' => '#475569',
+      'accent' => '#0284c7',
+      'accent_hover' => '#0369a1',
+      'rgb' => '51, 65, 85',
+    ],
+    'marinho' => [
+      'name' => t('Azul Marinho Noturno (Acadêmico Clássico)'),
+      'description' => t('Azul marinho sóbrio e solene com detalhes em dourado.'),
+      'primary' => '#0f3b60',
+      'primary_dark' => '#09263e',
+      'primary_light' => '#17578c',
+      'accent' => '#e5a823',
+      'accent_hover' => '#b88214',
+      'rgb' => '15, 59, 96',
+    ],
+    'roxo' => [
+      'name' => t('Roxo Acadêmico / Púrpura (Filosofia & Artes)'),
+      'description' => t('Púrpura acadêmico nobre, associado à reflexão filosófica e teoria crítica.'),
+      'primary' => '#4c2882',
+      'primary_dark' => '#331959',
+      'primary_light' => '#6639aa',
+      'accent' => '#eab308',
+      'accent_hover' => '#ca8a04',
+      'rgb' => '76, 40, 130',
+    ],
+  ];
+}
 
+/**
+ * Retorna os valores das cores para a paleta solicitada.
+ */
+function fflch_get_palette_colors($palette = NULL) {
+  if ($palette === NULL) {
+    $palette = theme_get_setting('color_palette', 'fflch') ?: 'default';
+  }
+
+  $palettes = fflch_get_palettes();
+
+  if ($palette === 'custom') {
+    $primary = theme_get_setting('custom_color_primary', 'fflch') ?: '#273e74';
+    $primary_dark = theme_get_setting('custom_color_primary_dark', 'fflch') ?: '#1a2b52';
+    $accent = theme_get_setting('custom_color_accent', 'fflch') ?: '#de9c16';
+
+    // Calcula RGB a partir da cor primária.
+    $hex = ltrim($primary, '#');
+    if (strlen($hex) == 3) {
+      $r = hexdec(substr($hex, 0, 1) . substr($hex, 0, 1));
+      $g = hexdec(substr($hex, 1, 1) . substr($hex, 1, 1));
+      $b = hexdec(substr($hex, 2, 1) . substr($hex, 2, 1));
+    }
+    elseif (strlen($hex) >= 6) {
+      $r = hexdec(substr($hex, 0, 2));
+      $g = hexdec(substr($hex, 2, 2));
+      $b = hexdec(substr($hex, 4, 2));
+    }
+    else {
+      $r = 39; $g = 62; $b = 116;
+    }
+
+    return [
+      'name' => t('Personalizada'),
+      'description' => t('Paleta com cores definidas manualmente.'),
+      'primary' => $primary,
+      'primary_dark' => $primary_dark,
+      'primary_light' => $primary,
+      'accent' => $accent,
+      'accent_hover' => $accent,
+      'rgb' => "{$r}, {$g}, {$b}",
+    ];
+  }
+
+  if (isset($palettes[$palette])) {
+    return $palettes[$palette];
+  }
+
+  return $palettes['default'];
+}
+
+/**
+ * Gera o bloco CSS de variáveis customizadas para a paleta ativa.
+ */
+function fflch_get_palette_css_variables($colors) {
+  return ":root {\n"
+    . "  --fflch-primary: " . $colors['primary'] . ";\n"
+    . "  --fflch-primary-dark: " . $colors['primary_dark'] . ";\n"
+    . "  --fflch-primary-light: " . $colors['primary_light'] . ";\n"
+    . "  --fflch-primary-rgb: " . $colors['rgb'] . ";\n"
+    . "  --fflch-accent: " . $colors['accent'] . ";\n"
+    . "  --fflch-accent-hover: " . $colors['accent_hover'] . ";\n"
+    . "}\n";
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function fflch_preprocess_html(&$variables) {
+  $palette = theme_get_setting('color_palette', 'fflch') ?: 'default';
+  $colors = fflch_get_palette_colors($palette);
+
+  $variables['attributes']['class'][] = 'fflch-theme-modern';
+  $variables['attributes']['class'][] = 'fflch-palette-' . $palette;
+
+  // Injeta variáveis CSS no HTML head para dinamismo total de paletas.
+  $inline_css = fflch_get_palette_css_variables($colors);
+  $variables['#attached']['html_head'][] = [
+    [
+      '#tag' => 'style',
+      '#value' => $inline_css,
+      '#attributes' => ['id' => 'fflch-dynamic-palette'],
+    ],
+    'fflch_palette_css',
+  ];
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
 function fflch_preprocess_page(&$vars) {
 
-  // Load the site name out of configuration.
+  // Carrega informações do site.
   $config = \Drupal::config('system.site');
   $vars['site_name'] = $config->get('name');
   $vars['site_slogan'] = $config->get('slogan');
 
-  // Add information about the number of sidebars.
+  // Adiciona informações sobre o número de barras laterais (sidebars).
   if (!empty($vars['page']['sidebar_first']) && !empty($vars['page']['sidebar_second'])) {
     $vars['contentlayout'] = 'col-md-6 col-sm-6';
     $vars['sidebarfirst'] = 'col-md-3 col-sm-3';
     $vars['sidebarsecond'] = 'col-md-3 col-sm-3';
   }
-
   elseif (!empty($vars['page']['sidebar_first']) && !empty($vars['page']['sidebar_second_second'])) {
     $vars['contentlayout'] = 'col-md-6 col-sm-6';
     $vars['sidebarfirst'] = 'col-md-3 col-sm-3';
     $vars['sidebarsecondsecond'] = 'col-md-3 col-sm-3';
   }
-
-  // Essa condição não está funcionando, quando há 3 colunas de blocos
   elseif (!empty($vars['page']['sidebar_first']) && !empty($vars['page']['sidebar_second_second']) && !empty($vars['page']['sidebar_second'])) {
     $vars['contentlayout'] = 'col-md-6 col-sm-6';
     $vars['sidebarfirst'] = 'col-md-2 col-sm-2';
     $vars['sidebarsecondsecond'] = 'col-md-2 col-sm-2';
     $vars['sidebarsecond'] = 'col-md-2 col-sm-2';
   }
-
   elseif (!empty($vars['page']['sidebar_second_second']) && !empty($vars['page']['sidebar_second'])) {
     $vars['contentlayout'] = 'col-md-6 col-sm-6';
     $vars['sidebarsecondsecond'] = 'col-md-3 col-sm-3';
     $vars['sidebarsecond'] = 'col-md-3 col-sm-3';
   }
-
   elseif (!empty($vars['page']['sidebar_first'])) {
     $vars['contentlayout'] = 'col-md-9 col-sm-9 ';
     $vars['sidebarfirst'] = 'col-md-3 col-sm-3';
   }
-
   elseif (!empty($vars['page']['sidebar_second'])) {
     $vars['contentlayout'] = 'col-md-9 sol-sm-9 ';
     $vars['sidebarsecond'] = 'col-md-3 col-sm-3';
   }
-
   elseif (!empty($vars['page']['sidebar_second_second'])) {
     $vars['contentlayout'] = 'col-md-9 sol-sm-9 ';
     $vars['sidebarsecondsecond'] = 'col-md-3 col-sm-3';
   }
-
   else {
     $vars['contentlayout'] = 'col-lg-12 centered ';
   }
 
+  // Configuração da paleta de cores.
+  $palette = theme_get_setting('color_palette', 'fflch') ?: 'default';
+  $colors = fflch_get_palette_colors($palette);
+  $vars['color_palette'] = $palette;
+  $vars['palette_colors'] = $colors;
+
+  // Anexa variáveis CSS na renderização da página.
+  $inline_css = fflch_get_palette_css_variables($colors);
+  $vars['#attached']['html_head'][] = [
+    [
+      '#tag' => 'style',
+      '#value' => $inline_css,
+      '#attributes' => ['id' => 'fflch-dynamic-palette'],
+    ],
+    'fflch_palette_css',
+  ];
+
+  // Slideshow
   $show_slideshow = theme_get_setting('slideshow_display', 'fflch');
   $current_path = \Drupal::service('path.current')->getPath();
-  #$path_alias = mb_strtolower(\Drupal::service('path.alias_manager')->getAliasByPath($current_path));
-  $path_alias = mb_strtolower(\Drupal::service('path_alias.manager')->getAliasByPath($current_path));
+
+  if (\Drupal::hasService('path_alias.manager')) {
+    $path_alias = mb_strtolower(\Drupal::service('path_alias.manager')->getAliasByPath($current_path));
+  }
+  elseif (\Drupal::hasService('path.alias_manager')) {
+    $path_alias = mb_strtolower(\Drupal::service('path.alias_manager')->getAliasByPath($current_path));
+  }
+  else {
+    $path_alias = $current_path;
+  }
+
   if (theme_get_setting('slideshow_visiblity', 'fflch')) {
     $visiblity = \Drupal::service('path.matcher')->matchPath($path_alias, theme_get_setting('slideshow_visiblity', 'fflch'));
   }
@@ -81,14 +276,19 @@ function fflch_preprocess_page(&$vars) {
       $fid = theme_get_setting("slide_image_{$i}", "fflch");
       if (!empty($fid)) {
         $file = \Drupal\file\Entity\File::load($fid[0]);
-        $uri = $file->getFileUri();
-        $image_path = file_create_url($uri);
+        if ($file) {
+          $uri = $file->getFileUri();
+          $image_path = file_create_url($uri);
+        }
+        else {
+          $image_path = THEME_PATH_FFLCH . "/images/slide-{$i}.jpg";
+        }
       }
       else {
         $image_path = THEME_PATH_FFLCH . "/images/slide-{$i}.jpg";
       }
       $vars['slider'][] = array(
-        'name' => !empty($fid) ? $file->getFilename() : "slider-{$i}",
+        'name' => !empty($fid) && !empty($file) ? $file->getFilename() : "slider-{$i}",
         'url' => theme_get_setting("slide_url_{$i}", "fflch"),
         'src' => $image_path,
         'description' => theme_get_setting("slide_description_{$i}", "fflch"),
@@ -98,18 +298,79 @@ function fflch_preprocess_page(&$vars) {
 
 }
 
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ */
 function fflch_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
 
-  $form['fflch_settings'] = array(
+  // Seção de Aparência e Paleta de Cores.
+  $form['fflch_appearance'] = [
     '#type' => 'details',
-    '#title' => t('Configurações'),
-    '#open' => FALSE,
-  );
+    '#title' => t('Paleta de Cores & Identidade Visual'),
+    '#open' => TRUE,
+    '#weight' => -20,
+  ];
 
+  $palettes = fflch_get_palettes();
+  $palette_options = [];
+  foreach ($palettes as $key => $palette_info) {
+    $palette_options[$key] = $palette_info['name'];
+  }
+  $palette_options['custom'] = t('Personalizada (definir cores manualmente)');
+
+  $form['fflch_appearance']['color_palette'] = [
+    '#type' => 'select',
+    '#title' => t('Paleta de Cores do Tema'),
+    '#options' => $palette_options,
+    '#default_value' => theme_get_setting('color_palette', 'fflch') ?: 'default',
+    '#description' => t('Selecione uma paleta visual harmonizada para o site mantendo a identidade institucional da FFLCH/USP.'),
+  ];
+
+  // Cores personalizadas (visíveis apenas quando "Personalizada" for selecionado).
+  $form['fflch_appearance']['custom_colors'] = [
+    '#type' => 'fieldset',
+    '#title' => t('Cores Personalizadas'),
+    '#states' => [
+      'visible' => [
+        ':input[name="color_palette"]' => ['value' => 'custom'],
+      ],
+    ],
+  ];
+
+  $form['fflch_appearance']['custom_colors']['custom_color_primary'] = [
+    '#type' => 'color',
+    '#title' => t('Cor Primária'),
+    '#default_value' => theme_get_setting('custom_color_primary', 'fflch') ?: '#273e74',
+    '#description' => t('Cor de destaque principal (menu, cabeçalhos de blocos, botões e rodapé).'),
+  ];
+
+  $form['fflch_appearance']['custom_colors']['custom_color_primary_dark'] = [
+    '#type' => 'color',
+    '#title' => t('Cor Primária Escura (Hover / Dropdown)'),
+    '#default_value' => theme_get_setting('custom_color_primary_dark', 'fflch') ?: '#1a2b52',
+    '#description' => t('Variação mais escura para interação com o cursor e itens de submenu.'),
+  ];
+
+  $form['fflch_appearance']['custom_colors']['custom_color_accent'] = [
+    '#type' => 'color',
+    '#title' => t('Cor de Destaque / Links do Rodapé'),
+    '#default_value' => theme_get_setting('custom_color_accent', 'fflch') ?: '#de9c16',
+    '#description' => t('Cor de acento para links no rodapé e destaques especiais.'),
+  ];
+
+  $form['fflch_appearance']['modern_effects'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Ativar modernização visual (sombras suaves, bordas e transições elegantes)'),
+    '#default_value' => theme_get_setting('modern_effects', 'fflch') !== NULL ? theme_get_setting('modern_effects', 'fflch') : 1,
+    '#description' => t('Mantém compatibilidade com todas as classes CSS originais enquanto aplica um acabamento visual moderno.'),
+  ];
+
+  // Seção do Slideshow.
   $form['fflch_settings'] = array(
     '#type' => 'details',
     '#title' => t('Configurações Slideshow'),
-    '#open' => TRUE,
+    '#open' => FALSE,
+    '#weight' => -10,
   );
 
   $form['fflch_settings']['slideshow']['slideshow_display'] = array(
@@ -160,7 +421,6 @@ function fflch_form_system_theme_settings_alter(&$form, FormStateInterface $form
     '#description'   => t("Specify pages by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are /user for the current user's page and /user/* for every user page. front is the front page."),
   );
 
-
   for ($i = 1; $i <= theme_get_setting('slideshow_count', 'fflch'); $i++) {
     $form['fflch_settings']['slideshow']["slide{$i}"] = array(
       '#type' => 'details',
@@ -187,14 +447,18 @@ function fflch_form_system_theme_settings_alter(&$form, FormStateInterface $form
     );
   }
 
-
-  $filename = drupal_get_path('theme', 'fflch') . '/fflch.theme';
+  $theme_path = \Drupal::hasService('extension.list.theme')
+    ? \Drupal::service('extension.list.theme')->getPath('fflch')
+    : (function_exists('drupal_get_path') ? drupal_get_path('theme', 'fflch') : 'themes/contrib/fflch-theme');
+  $filename = $theme_path . '/fflch.theme';
   $form_state->addBuildInfo('files', array($filename));
 
   $form['#submit'][] = 'fflch_settings_form_submit';
-
 }
 
+/**
+ * Submit handler para salvar arquivos de imagem do slideshow permanentemente.
+ */
 function fflch_settings_form_submit(&$form, FormStateInterface $form_state) {
   $account = \Drupal::currentUser();
   $values = $form_state->getValues();
@@ -213,10 +477,8 @@ function fflch_settings_form_submit(&$form, FormStateInterface $form_state) {
 }
 
 /**
- * https://drupal.stackexchange.com/questions/250502/render-a-menu-differently-based-on-region
- * You can add template suggestions. Because menus don't know their region,
- * you first have to add a helper variable in block preprocessing:
- **/
+ * Adiciona data-block-id para sugestões de menu por região.
+ */
 function fflch_preprocess_block(array &$variables) {
   if (!empty($variables['elements']['#id'])) {
     $variables['content']['#attributes']['data-block-id'] = $variables['elements']['#id'];
@@ -224,11 +486,8 @@ function fflch_preprocess_block(array &$variables) {
 }
 
 /**
- * https://drupal.stackexchange.com/questions/250502/render-a-menu-differently-based-on-region
- * After that you can alter the menu template suggestions
- * Now you can use twig templates like menu__REGIONNAME.html.twig 
- * for all menus in a given region.
- **/
+ * Altera sugestões de template de menu por região.
+ */
 function fflch_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
   if (isset($variables['attributes']['data-block-id'])) {
     $block = \Drupal\block\Entity\Block::load($variables['attributes']['data-block-id']);
@@ -237,6 +496,3 @@ function fflch_theme_suggestions_menu_alter(array &$suggestions, array $variable
     }
   }
 }
-
-
-

@@ -1,0 +1,145 @@
+/*
+ * CSS Variables & Design Tokens - Tema FFLCH
+ * Suporte a paletas de cores dinâmicas mantendo compatibilidade com 500+ sites.
+ */
+
+:root {
+  /* Paleta Padrão: Azul FFLCH / USP Tradicional */
+  --fflch-primary: #273e74;
+  --fflch-primary-dark: #1a2b52;
+  --fflch-primary-light: #3b589b;
+  --fflch-primary-subtle: #edf2f9;
+  --fflch-primary-rgb: 39, 62, 116;
+
+  /* Cores de Destaque / Acento (Ouro / Âmbar USP) */
+  --fflch-accent: #de9c16;
+  --fflch-accent-hover: #ab7811;
+  --fflch-accent-subtle: #fef8ee;
+
+  /* Neutros e Tipografia */
+  --fflch-text-primary: #1e293b;
+  --fflch-text-secondary: #475569;
+  --fflch-text-muted: #64748b;
+  --fflch-text-light: #94a3b8;
+
+  /* Superfícies e Fundos */
+  --fflch-bg-body: #f8fafc;
+  --fflch-bg-surface: #ffffff;
+  --fflch-bg-subtle: #f1f5f9;
+  --fflch-bg-card: #ffffff;
+
+  /* Bordas */
+  --fflch-border: #e2e8f0;
+  --fflch-border-subtle: #f1f5f9;
+  --fflch-border-focus: rgba(39, 62, 116, 0.35);
+
+  /* Sombras Modernas (Soft Elevation) */
+  --fflch-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --fflch-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.08);
+  --fflch-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+  --fflch-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --fflch-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+
+  /* Cantos Arredondados */
+  --fflch-radius-xs: 3px;
+  --fflch-radius-sm: 5px;
+  --fflch-radius-md: 8px;
+  --fflch-radius-lg: 12px;
+
+  /* Transições Fluidas */
+  --fflch-transition-fast: 0.15s ease-in-out;
+  --fflch-transition: 0.25s ease-in-out;
+
+  /* Fontes */
+  --fflch-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fflch-font-brand: "Arial Narrow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ==========================================================================
+   Paletas Pré-definidas (Classes aplicadas no <body>)
+   ========================================================================== */
+
+/* 1. Azul Tradicional FFLCH / USP (Padrão) */
+body.fflch-palette-default {
+  --fflch-primary: #273e74;
+  --fflch-primary-dark: #1a2b52;
+  --fflch-primary-light: #3b589b;
+  --fflch-primary-subtle: #edf2f9;
+  --fflch-primary-rgb: 39, 62, 116;
+  --fflch-accent: #de9c16;
+  --fflch-accent-hover: #ab7811;
+  --fflch-border-focus: rgba(39, 62, 116, 0.35);
+}
+
+/* 2. Vinho / Rubi (Ciências Humanas, Letras & Literatura) */
+body.fflch-palette-vinho {
+  --fflch-primary: #7a1b2e;
+  --fflch-primary-dark: #56101e;
+  --fflch-primary-light: #9e263d;
+  --fflch-primary-subtle: #faf0f2;
+  --fflch-primary-rgb: 122, 27, 46;
+  --fflch-accent: #c9933b;
+  --fflch-accent-hover: #a67425;
+  --fflch-border-focus: rgba(122, 27, 46, 0.35);
+}
+
+/* 3. Verde Floresta / Esmeralda (Geografia, Meio Ambiente & Ciências) */
+body.fflch-palette-verde {
+  --fflch-primary: #1b5e3a;
+  --fflch-primary-dark: #114227;
+  --fflch-primary-light: #258251;
+  --fflch-primary-subtle: #eff8f2;
+  --fflch-primary-rgb: 27, 94, 58;
+  --fflch-accent: #d4a017;
+  --fflch-accent-hover: #b0800e;
+  --fflch-border-focus: rgba(27, 94, 58, 0.35);
+}
+
+/* 4. Terracota / Tijolo (História, Antropologia & Arqueologia) */
+body.fflch-palette-terracota {
+  --fflch-primary: #8b3a2b;
+  --fflch-primary-dark: #66271c;
+  --fflch-primary-light: #b04c3a;
+  --fflch-primary-subtle: #faf2f0;
+  --fflch-primary-rgb: 139, 58, 43;
+  --fflch-accent: #df9c34;
+  --fflch-accent-hover: #b87a20;
+  --fflch-border-focus: rgba(139, 58, 43, 0.35);
+}
+
+/* 5. Grafite Moderno / Slate (Contemporâneo, Neutro & Elegante) */
+body.fflch-palette-grafite {
+  --fflch-primary: #334155;
+  --fflch-primary-dark: #1e293b;
+  --fflch-primary-light: #475569;
+  --fflch-primary-subtle: #f1f5f9;
+  --fflch-primary-rgb: 51, 65, 85;
+  --fflch-accent: #0284c7;
+  --fflch-accent-hover: #0369a1;
+  --fflch-border-focus: rgba(51, 65, 85, 0.35);
+}
+
+/* 6. Azul Noturno / Marinho Profundo (Acadêmico Clássico) */
+body.fflch-palette-marinho {
+  --fflch-primary: #0f3b60;
+  --fflch-primary-dark: #09263e;
+  --fflch-primary-light: #17578c;
+  --fflch-primary-subtle: #eef5fa;
+  --fflch-primary-rgb: 15, 59, 96;
+  --fflch-accent: #e5a823;
+  --fflch-accent-hover: #b88214;
+  --fflch-border-focus: rgba(15, 59, 96, 0.35);
+}
+
+/* 7. Roxo Acadêmico / Púrpura (Filosofia, Artes & Teoria) */
+body.fflch-palette-roxo {
+  --fflch-primary: #4c2882;
+  --fflch-primary-dark: #331959;
+  --fflch-primary-light: #6639aa;
+  --fflch-primary-subtle: #f4effb;
+  --fflch-primary-rgb: 76, 40, 130;
+  --fflch-accent: #eab308;
+  --fflch-accent-hover: #ca8a04;
+  --fflch-border-focus: rgba(76, 40, 130, 0.35);
+}
+

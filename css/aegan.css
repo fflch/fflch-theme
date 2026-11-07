@@ -412,11 +412,11 @@ tr:nth-child(odd) {
     background: #FFF;
 }
 tr:nth-child(even) {
-    background: #D8D8D8;
+    background: var(--fflch-bg-subtle, #f8fafc);
 }
 th {
     padding: 10px;
-    background-color: #003954;
+    background-color: var(--fflch-primary, #273e74);
     color: #fff;
 }
 th a, th a:hover {
