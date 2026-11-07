@@ -1,4 +1,5 @@
 color_palette: 'default'
+layout_style: 'boxed'
 custom_color_primary: '#273e74'
 custom_color_primary_dark: '#1a2b52'
 custom_color_accent: '#de9c16'

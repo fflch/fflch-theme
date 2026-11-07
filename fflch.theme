@@ -27,8 +27,7 @@ if (!defined('THEME_PATH_FFLCH')) {
 function fflch_get_palettes() {
   return [
     'default' => [
-      'name' => t('Azul Tradicional FFLCH / USP (Padrão)'),
-      'description' => t('Azul clássico institucional da FFLCH e USP com acentos em ouro/âmbar.'),
+      'name' => t('Azul Tradicional'),
       'primary' => '#273e74',
       'primary_dark' => '#1a2b52',
       'primary_light' => '#3b589b',
@@ -37,8 +36,7 @@ function fflch_get_palettes() {
       'rgb' => '39, 62, 116',
     ],
     'vinho' => [
-      'name' => t('Vinho / Rubi (Ciências Humanas & Letras)'),
-      'description' => t('Bordô elegante e acolhedor, ideal para Letras, Literatura e Linguística.'),
+      'name' => t('Vinho / Rubi'),
       'primary' => '#7a1b2e',
       'primary_dark' => '#56101e',
       'primary_light' => '#9e263d',
@@ -47,8 +45,7 @@ function fflch_get_palettes() {
       'rgb' => '122, 27, 46',
     ],
     'verde' => [
-      'name' => t('Verde Floresta / Esmeralda (Geografia & Meio Ambiente)'),
-      'description' => t('Verde acadêmico profundo, ideal para Geografia, Estudos Ambientais e Ciências.'),
+      'name' => t('Verde Floresta'),
       'primary' => '#1b5e3a',
       'primary_dark' => '#114227',
       'primary_light' => '#258251',
@@ -57,8 +54,7 @@ function fflch_get_palettes() {
       'rgb' => '27, 94, 58',
     ],
     'terracota' => [
-      'name' => t('Terracota / Argila (História & Antropologia)'),
-      'description' => t('Tom terroso nobre, inspirado em cerâmica e arqueologia histórica.'),
+      'name' => t('Terracota / Argila'),
       'primary' => '#8b3a2b',
       'primary_dark' => '#66271c',
       'primary_light' => '#b04c3a',
@@ -67,8 +63,7 @@ function fflch_get_palettes() {
       'rgb' => '139, 58, 43',
     ],
     'grafite' => [
-      'name' => t('Grafite Moderno / Slate (Neutro & Contemporâneo)'),
-      'description' => t('Cinza ardósia contemporâneo e sofisticado, neutro para portais e laboratórios.'),
+      'name' => t('Grafite / Slate'),
       'primary' => '#334155',
       'primary_dark' => '#1e293b',
       'primary_light' => '#475569',
@@ -77,8 +72,7 @@ function fflch_get_palettes() {
       'rgb' => '51, 65, 85',
     ],
     'marinho' => [
-      'name' => t('Azul Marinho Noturno (Acadêmico Clássico)'),
-      'description' => t('Azul marinho sóbrio e solene com detalhes em dourado.'),
+      'name' => t('Azul Marinho Noturno'),
       'primary' => '#0f3b60',
       'primary_dark' => '#09263e',
       'primary_light' => '#17578c',
@@ -87,14 +81,58 @@ function fflch_get_palettes() {
       'rgb' => '15, 59, 96',
     ],
     'roxo' => [
-      'name' => t('Roxo Acadêmico / Púrpura (Filosofia & Artes)'),
-      'description' => t('Púrpura acadêmico nobre, associado à reflexão filosófica e teoria crítica.'),
+      'name' => t('Roxo Acadêmico'),
       'primary' => '#4c2882',
       'primary_dark' => '#331959',
       'primary_light' => '#6639aa',
       'accent' => '#eab308',
       'accent_hover' => '#ca8a04',
       'rgb' => '76, 40, 130',
+    ],
+    'petroleo' => [
+      'name' => t('Petróleo / Oceano'),
+      'primary' => '#164e63',
+      'primary_dark' => '#0e3847',
+      'primary_light' => '#0891b2',
+      'accent' => '#38bdf8',
+      'accent_hover' => '#0284c7',
+      'rgb' => '22, 78, 99',
+    ],
+    'ocre' => [
+      'name' => t('Mostarda / Ocre'),
+      'primary' => '#854d0e',
+      'primary_dark' => '#603507',
+      'primary_light' => '#a16207',
+      'accent' => '#f59e0b',
+      'accent_hover' => '#d97706',
+      'rgb' => '133, 77, 14',
+    ],
+    'cafe' => [
+      'name' => t('Café / Mogno'),
+      'primary' => '#4a2c2a',
+      'primary_dark' => '#321d1b',
+      'primary_light' => '#633b38',
+      'accent' => '#d97706',
+      'accent_hover' => '#b45309',
+      'rgb' => '74, 44, 42',
+    ],
+    'esmeralda' => [
+      'name' => t('Esmeralda / Menta'),
+      'primary' => '#065f46',
+      'primary_dark' => '#044432',
+      'primary_light' => '#059669',
+      'accent' => '#10b981',
+      'accent_hover' => '#047857',
+      'rgb' => '6, 95, 70',
+    ],
+    'coral' => [
+      'name' => t('Coral / Pôr do Sol'),
+      'primary' => '#9f1239',
+      'primary_dark' => '#700c28',
+      'primary_light' => '#be123c',
+      'accent' => '#fb923c',
+      'accent_hover' => '#f97316',
+      'rgb' => '159, 18, 57',
     ],
   ];
 }
@@ -132,7 +170,6 @@ function fflch_get_palette_colors($palette = NULL) {
 
     return [
       'name' => t('Personalizada'),
-      'description' => t('Paleta com cores definidas manualmente.'),
       'primary' => $primary,
       'primary_dark' => $primary_dark,
       'primary_light' => $primary,
@@ -172,6 +209,7 @@ function fflch_preprocess_html(&$variables) {
 
   $variables['attributes']['class'][] = 'fflch-theme-modern';
   $variables['attributes']['class'][] = 'fflch-palette-' . $palette;
+  $variables['attributes']['class'][] = 'fflch-layout-fluid';
 
   // Injeta variáveis CSS no HTML head para dinamismo total de paletas.
   $inline_css = fflch_get_palette_css_variables($colors);
@@ -239,6 +277,20 @@ function fflch_preprocess_page(&$vars) {
   $vars['color_palette'] = $palette;
   $vars['palette_colors'] = $colors;
 
+  // Layout fixo em estilo moderno com largura fluida e visual institucional.
+  $vars['page_layout_class'] = 'container-fluid fflch-layout-fluid';
+
+  // Seleciona a versão do logo e do brasão USP correspondente à paleta de cor.
+  $palettes = fflch_get_palettes();
+  if ($palette !== 'default' && isset($palettes[$palette])) {
+    $vars['logo_file'] = "logo-{$palette}.png";
+    $vars['usp_logo_file'] = "usp-{$palette}.png";
+  }
+  else {
+    $vars['logo_file'] = 'logo.png';
+    $vars['usp_logo_file'] = 'usp.png';
+  }
+
   // Anexa variáveis CSS na renderização da página.
   $inline_css = fflch_get_palette_css_variables($colors);
   $vars['#attached']['html_head'][] = [
@@ -303,10 +355,10 @@ function fflch_preprocess_page(&$vars) {
  */
 function fflch_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
 
-  // Seção de Aparência e Paleta de Cores.
+  // Seção de Aparência, Layout e Paleta de Cores.
   $form['fflch_appearance'] = [
     '#type' => 'details',
-    '#title' => t('Paleta de Cores & Identidade Visual'),
+    '#title' => t('Paleta de Cores & Layout Visual'),
     '#open' => TRUE,
     '#weight' => -20,
   ];
@@ -316,14 +368,14 @@ function fflch_form_system_theme_settings_alter(&$form, FormStateInterface $form
   foreach ($palettes as $key => $palette_info) {
     $palette_options[$key] = $palette_info['name'];
   }
-  $palette_options['custom'] = t('Personalizada (definir cores manualmente)');
+  $palette_options['custom'] = t('Personalizada');
 
   $form['fflch_appearance']['color_palette'] = [
     '#type' => 'select',
     '#title' => t('Paleta de Cores do Tema'),
     '#options' => $palette_options,
     '#default_value' => theme_get_setting('color_palette', 'fflch') ?: 'default',
-    '#description' => t('Selecione uma paleta visual harmonizada para o site mantendo a identidade institucional da FFLCH/USP.'),
+    '#description' => t('Selecione uma das paletas predefinidas para modernizar o visual do site e os logos automaticamente.'),
   ];
 
   // Cores personalizadas (visíveis apenas quando "Personalizada" for selecionado).

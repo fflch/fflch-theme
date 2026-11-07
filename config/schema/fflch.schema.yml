@@ -5,6 +5,9 @@ fflch.settings:
     color_palette:
       type: string
       label: 'Paleta de Cores'
+    layout_style:
+      type: string
+      label: 'Estilo de Largura do Layout'
     custom_color_primary:
       type: string
       label: 'Cor Primária Personalizada'
@@ -35,4 +38,3 @@ fflch.settings:
     slideshow_visiblity:
       type: string
       label: 'Visibilidade do Slideshow'
-

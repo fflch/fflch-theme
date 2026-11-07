@@ -70,7 +70,7 @@
  * @ingroup themeable
  */
 #}
-<div id="page-wrapper" class="container">
+<div id="page-wrapper" class="{{ page_layout_class|default('container fflch-layout-boxed') }}">
 
   <div id="header-region" class="fflch-header-region">
     <div class="row fflch-row">
@@ -78,7 +78,7 @@
         {{ page.header }}
               <div class="fflch-header-center">
         <a class="fflch-header-center-logo-usp-link" href="https://www.usp.br" target="_blank">
-          <img class="fflch-header-center-logo-usp-img" src="{{ base_path ~ directory }}/images/usp.png" />
+          <img class="fflch-header-center-logo-usp-img" src="{{ base_path ~ directory }}/images/{{ usp_logo_file|default('usp.png') }}" />
         </a>
       </div>
       </div>
@@ -90,12 +90,15 @@
   </div>
 
   <div id="primary-menu-region" class="fflch-primary-menu-region">
-  {% include '@fflch/partials/header-partial.html.twig' %}
+    <div id="branding-region" class="fflch-branding-region">
+      {% include '@fflch/partials/header-partial.html.twig' %}
+    </div>
 
-
-  {% if page.primary_menu %}
-      {{ page.primary_menu }}
-  {% endif %}
+    {% if page.primary_menu %}
+      <div class="fflch-menu-bar-wrapper">
+        {{ page.primary_menu }}
+      </div>
+    {% endif %}
   </div>
 
   {% if page.slideshow_top %}

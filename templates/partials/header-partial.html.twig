@@ -5,7 +5,7 @@
     <div class="fflch-first"> {# class="first" #}
       <div class="fflch-item">
         <a class="fflch-logo-link" href="{{front_page|t}}">
-          <img class="fflch-logo-img" alt="fflch" src="{{ base_path ~ directory }}/images/logo.png" />
+          <img class="fflch-logo-img" alt="fflch" src="{{ base_path ~ directory }}/images/{{ logo_file|default('logo.png') }}" />
         </a>
       </div>
     </div>
@@ -24,7 +24,7 @@
     <div class="fflch-third"> {# class="third" #}
       <div class="fflch-item">
         <a class="fflch-logo-usp-link" href="https://www.usp.br" target="_blank">
-          <img class="fflch-logo-usp-img" src="{{ base_path ~ directory }}/images/usp.png" />
+          <img class="fflch-logo-usp-img" src="{{ base_path ~ directory }}/images/{{ usp_logo_file|default('usp.png') }}" />
         </a>  
       </div>
     </div>

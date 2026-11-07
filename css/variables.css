@@ -4,7 +4,7 @@
  */
 
 :root {
-  /* Paleta Padrão: Azul FFLCH / USP Tradicional */
+  /* Paleta Padrão: Azul Tradicional (FFLCH / USP) */
   --fflch-primary: #273e74;
   --fflch-primary-dark: #1a2b52;
   --fflch-primary-light: #3b589b;
@@ -35,16 +35,16 @@
 
   /* Sombras Modernas (Soft Elevation) */
   --fflch-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --fflch-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.08);
-  --fflch-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
-  --fflch-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --fflch-shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  --fflch-shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.08), 0 2px 6px -2px rgba(0, 0, 0, 0.04);
+  --fflch-shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.09), 0 4px 8px -3px rgba(0, 0, 0, 0.05);
   --fflch-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
 
   /* Cantos Arredondados */
-  --fflch-radius-xs: 3px;
-  --fflch-radius-sm: 5px;
-  --fflch-radius-md: 8px;
-  --fflch-radius-lg: 12px;
+  --fflch-radius-xs: 4px;
+  --fflch-radius-sm: 6px;
+  --fflch-radius-md: 10px;
+  --fflch-radius-lg: 14px;
 
   /* Transições Fluidas */
   --fflch-transition-fast: 0.15s ease-in-out;
@@ -59,7 +59,7 @@
    Paletas Pré-definidas (Classes aplicadas no <body>)
    ========================================================================== */
 
-/* 1. Azul Tradicional FFLCH / USP (Padrão) */
+/* 1. Azul Tradicional (Padrão) */
 body.fflch-palette-default {
   --fflch-primary: #273e74;
   --fflch-primary-dark: #1a2b52;
@@ -71,7 +71,7 @@ body.fflch-palette-default {
   --fflch-border-focus: rgba(39, 62, 116, 0.35);
 }
 
-/* 2. Vinho / Rubi (Ciências Humanas, Letras & Literatura) */
+/* 2. Vinho / Rubi */
 body.fflch-palette-vinho {
   --fflch-primary: #7a1b2e;
   --fflch-primary-dark: #56101e;
@@ -83,7 +83,7 @@ body.fflch-palette-vinho {
   --fflch-border-focus: rgba(122, 27, 46, 0.35);
 }
 
-/* 3. Verde Floresta / Esmeralda (Geografia, Meio Ambiente & Ciências) */
+/* 3. Verde Floresta */
 body.fflch-palette-verde {
   --fflch-primary: #1b5e3a;
   --fflch-primary-dark: #114227;
@@ -95,7 +95,7 @@ body.fflch-palette-verde {
   --fflch-border-focus: rgba(27, 94, 58, 0.35);
 }
 
-/* 4. Terracota / Tijolo (História, Antropologia & Arqueologia) */
+/* 4. Terracota / Argila */
 body.fflch-palette-terracota {
   --fflch-primary: #8b3a2b;
   --fflch-primary-dark: #66271c;
@@ -107,7 +107,7 @@ body.fflch-palette-terracota {
   --fflch-border-focus: rgba(139, 58, 43, 0.35);
 }
 
-/* 5. Grafite Moderno / Slate (Contemporâneo, Neutro & Elegante) */
+/* 5. Grafite / Slate */
 body.fflch-palette-grafite {
   --fflch-primary: #334155;
   --fflch-primary-dark: #1e293b;
@@ -119,7 +119,7 @@ body.fflch-palette-grafite {
   --fflch-border-focus: rgba(51, 65, 85, 0.35);
 }
 
-/* 6. Azul Noturno / Marinho Profundo (Acadêmico Clássico) */
+/* 6. Azul Marinho Noturno */
 body.fflch-palette-marinho {
   --fflch-primary: #0f3b60;
   --fflch-primary-dark: #09263e;
@@ -131,7 +131,7 @@ body.fflch-palette-marinho {
   --fflch-border-focus: rgba(15, 59, 96, 0.35);
 }
 
-/* 7. Roxo Acadêmico / Púrpura (Filosofia, Artes & Teoria) */
+/* 7. Roxo Acadêmico */
 body.fflch-palette-roxo {
   --fflch-primary: #4c2882;
   --fflch-primary-dark: #331959;
@@ -143,3 +143,62 @@ body.fflch-palette-roxo {
   --fflch-border-focus: rgba(76, 40, 130, 0.35);
 }
 
+/* 8. Petróleo / Oceano */
+body.fflch-palette-petroleo {
+  --fflch-primary: #164e63;
+  --fflch-primary-dark: #0e3847;
+  --fflch-primary-light: #0891b2;
+  --fflch-primary-subtle: #ecfeff;
+  --fflch-primary-rgb: 22, 78, 99;
+  --fflch-accent: #38bdf8;
+  --fflch-accent-hover: #0284c7;
+  --fflch-border-focus: rgba(22, 78, 99, 0.35);
+}
+
+/* 9. Mostarda / Ocre */
+body.fflch-palette-ocre {
+  --fflch-primary: #854d0e;
+  --fflch-primary-dark: #603507;
+  --fflch-primary-light: #a16207;
+  --fflch-primary-subtle: #fefce8;
+  --fflch-primary-rgb: 133, 77, 14;
+  --fflch-accent: #f59e0b;
+  --fflch-accent-hover: #d97706;
+  --fflch-border-focus: rgba(133, 77, 14, 0.35);
+}
+
+/* 10. Café / Mogno */
+body.fflch-palette-cafe {
+  --fflch-primary: #4a2c2a;
+  --fflch-primary-dark: #321d1b;
+  --fflch-primary-light: #633b38;
+  --fflch-primary-subtle: #f7f3f2;
+  --fflch-primary-rgb: 74, 44, 42;
+  --fflch-accent: #d97706;
+  --fflch-accent-hover: #b45309;
+  --fflch-border-focus: rgba(74, 44, 42, 0.35);
+}
+
+/* 11. Esmeralda / Menta */
+body.fflch-palette-esmeralda {
+  --fflch-primary: #065f46;
+  --fflch-primary-dark: #044432;
+  --fflch-primary-light: #059669;
+  --fflch-primary-subtle: #ecfdf5;
+  --fflch-primary-rgb: 6, 95, 70;
+  --fflch-accent: #10b981;
+  --fflch-accent-hover: #047857;
+  --fflch-border-focus: rgba(6, 95, 70, 0.35);
+}
+
+/* 12. Coral / Pôr do Sol */
+body.fflch-palette-coral {
+  --fflch-primary: #9f1239;
+  --fflch-primary-dark: #700c28;
+  --fflch-primary-light: #be123c;
+  --fflch-primary-subtle: #fff1f2;
+  --fflch-primary-rgb: 159, 18, 57;
+  --fflch-accent: #fb923c;
+  --fflch-accent-hover: #f97316;
+  --fflch-border-focus: rgba(159, 18, 57, 0.35);
+}
