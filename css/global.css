@@ -461,3 +461,21 @@ th {
 #toolbar-administration .toolbar-tray-horizontal {
   z-index: 10001 !important;
 }
+
+/* Restaura o espaçamento do topo quando a barra de administração do Drupal estiver ativa */
+body.toolbar-fixed,
+body.toolbar-horizontal {
+  padding-top: 39px !important;
+}
+
+/* Ajusta o topo caso a bandeja secundária (tray) do Drupal esteja aberta */
+body.toolbar-fixed.toolbar-tray-open.toolbar-horizontal {
+  padding-top: 79px !important;
+}
+
+/* Garante que o bloco de busca e o cabeçalho respeitem o fluxo relativo */
+body.toolbar-fixed #header-region,
+body.toolbar-horizontal #header-region {
+  position: relative !important;
+  top: auto !important;
+}
